@@ -79,7 +79,7 @@ if [ ! -f ~/.ssh/id_rsa.pub ]; then
 fi
 
 # COPY CUSTOM PROVISION SCRIPT TO vagrant DIR
-cp ../application-config.sh .;
+cp ../scripts/application-config.sh .;
 sed -i "s|applicationName=;|applicationName=$application;|g" application-config.sh;
 
 # ADD CUSTOM PROVISIONING SCRIPT TO Vagrantfile

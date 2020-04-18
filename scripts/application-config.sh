@@ -24,5 +24,5 @@ ff02::2 ip6-allrouters
 EOF
 
 if [ ! -f /home/vagrant/.laravel-installed ]; then
-    su vagrant -c "sh \"/home/vagrant/$applicationName/laravel-install.sh\" \"$applicationName\"";
+    su vagrant -c "sh \"/home/vagrant/$applicationName/scripts/laravel-install.sh\" \"$applicationName\"";
 fi
