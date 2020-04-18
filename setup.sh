@@ -37,8 +37,9 @@ fi
 rm -rf vagrant;
 git clone https://github.com/laravel/homestead.git vagrant;
 
-# GOING TO vagrant FOLDER AND INITIALIZE HOMESTEAD
+# GOING TO vagrant FOLDER, REMOVE GIT REPO AND INITIALIZE HOMESTEAD
 cd vagrant || exit;
+rm -rf .git .gitattributes .github;
 ./init.sh;
 
 # INSTALL VAGRANT-HOSTMANAGER PLUGIN IF NEEDED
