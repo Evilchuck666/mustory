@@ -4,8 +4,8 @@
 clear;
 
 # CONSTANT VALUES FOR VM RAM
-readonly _DEV=2048
-readonly _PRO=1024
+readonly _DEV=2048;
+readonly _PRO=1024;
 
 # CHOOSE WHICH KIND OF SETUP WILL BE PERFORMED.
 echo "Which kind of environment is the installation for?";
@@ -38,7 +38,7 @@ rm -rf vagrant;
 git clone https://github.com/laravel/homestead.git vagrant;
 
 # GOING TO vagrant FOLDER AND INITIALIZE HOMESTEAD
-cd vagrant;
+cd vagrant || exit;
 ./init.sh;
 
 # INSTALL VAGRANT-HOSTMANAGER PLUGIN IF NEEDED
@@ -73,6 +73,7 @@ sed -i "s|/public|/code/public|g" Homestead.yaml
 
 # CREATING SSH KEYS IF THEY DON'T EXIST
 if [ ! -f ~/.ssh/id_rsa.pub ]; then
+    # shellcheck disable=SC2002
     cat /dev/zero | ssh-keygen -t rsa -q -N "";
 fi
 
