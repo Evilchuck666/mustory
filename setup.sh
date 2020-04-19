@@ -34,6 +34,7 @@ read -s -r -p 'Enter the password of the mysql administrator (default superadmin
 if [ "$dbPassword" = "" ]; then
     dbPassword="superadmin";
 fi;
+echo "";
 
 # SETTING RAM
 if [ "$environment" = "0" ]; then
