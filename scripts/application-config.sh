@@ -1,6 +1,9 @@
 #!/bin/bash
 
 applicationName=;
+databaseName=;
+dbUsername=;
+dbPassword=;
 
 echo $applicationName > /etc/hostname;
 hostname $applicationName;
@@ -23,6 +26,10 @@ ff02::2 ip6-allrouters
 #### HOMESTEAD-SITES-END
 EOF
 
+# EXECUTE INSTALLATION OF LARAVEL AND DATABASE CONFIGURATION
 if [ ! -f /home/vagrant/.laravel-installed ]; then
-    su vagrant -c "sh \"/home/vagrant/$applicationName/scripts/laravel-install.sh\" \"$applicationName\"";
-fi
+    su vagrant -c "bash \"/home/vagrant/$applicationName/scripts/laravel-install.sh\" \"$applicationName\"";
+    su vagrant -c "bash \"/home/vagrant/$applicationName/scripts/database-config.sh\" \"$applicationName\" \"$databaseName\" \"$dbUsername\" \"$dbPassword\"";
+
+    su root -c "bash \"/home/vagrant/$applicationName/scripts/create-db-user.sh\" \"$applicationName\" \"$dbUsername\" \"$dbPassword\"";
+fi;

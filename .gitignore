@@ -1,5 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Example user template template
+/vagrant/*
+scripts/application-config.sh
+scripts/create-db-user.sh
+scripts/createDbUser.sql
+scripts/database-config.sh
+scripts/laravel-install.sh
 ### Example user template
 
 # IntelliJ project files
@@ -7,5 +13,3 @@
 *.iml
 out
 gen
-/vagrant
-*vagrant*
