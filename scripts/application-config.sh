@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# VARIABLES TO FILL ON SETUP BASH SCRIPT
 applicationName=;
 databaseName=;
 dbUsername=;
 dbPassword=;
 
+# SETTING VAGRANT HOSTNAME
 echo $applicationName > /etc/hostname;
 hostname $applicationName;
 hostnamectl set-hostname $applicationName;

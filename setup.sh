@@ -107,4 +107,5 @@ cat >> Vagrantfile << EOF
 end
 EOF
 
+# WAKES UP VAGRANT MACHINE
 vagrant up;
