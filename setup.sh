@@ -53,14 +53,6 @@ cd vagrant || exit;
 rm -rf .git .gitattributes .github;
 ./init.sh;
 
-# STORE DATABASE VARIABLES
-cat > ../scripts/setup-params << EOF
-$applicationName
-$databaseName
-$dbUsername
-$dbPassword
-EOF
-
 # INSTALL VAGRANT-HOSTMANAGER PLUGIN IF NEEDED
 hostManagerPlugin=$(vagrant plugin list | grep vagrant-hostmanager);
 if [ "$hostManagerPlugin" = "" ]; then
@@ -100,6 +92,9 @@ fi;
 # COPY CUSTOM PROVISION SCRIPT TO vagrant DIR
 cp ../scripts/application-config.sh .;
 sed -i "s|applicationName=;|applicationName=$applicationName;|g" application-config.sh;
+sed -i "s|databaseName=;|databaseName=$databaseName;|g" application-config.sh;
+sed -i "s|dbUsername=;|dbUsername=$dbUsername;|g" application-config.sh;
+sed -i "s|dbPassword=;|dbPassword=$dbPassword;|g" application-config.sh;
 
 # ADD CUSTOM PROVISIONING SCRIPT TO Vagrantfile
 sed -i "/aliasesPath = confDir/a initAppPath = confDir + \"\/application-config.sh\"" Vagrantfile;
